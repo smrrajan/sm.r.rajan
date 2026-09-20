@@ -1,0 +1,227 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  @apply scroll-smooth;
+}
+
+html {
+  @apply scroll-smooth;
+}
+
+body {
+  @apply bg-dark-bg text-dark-text font-sans;
+  background: linear-gradient(135deg, #0f172a 0%, #1a1f3a 100%);
+  min-height: 100vh;
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  @apply w-2;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-dark-bg2;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-dark-accent rounded-full;
+  transition: background-color 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-blue-400;
+}
+
+/* Selection */
+::selection {
+  @apply bg-dark-accent text-white;
+}
+
+/* Smooth transitions */
+a,
+button {
+  @apply transition-all duration-300;
+}
+
+/* Animated gradient text */
+.gradient-text {
+  background: linear-gradient(135deg, #3b82f6 0%, #60a5fa 50%, #93c5fd 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradientShift 3s ease infinite;
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Glass morphism card */
+.glass-card {
+  @apply backdrop-blur-md bg-white/10 border border-white/20 rounded-2xl;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+}
+
+.glass-card:hover {
+  @apply border-white/40 bg-white/15;
+  box-shadow: 0 8px 32px 0 rgba(59, 130, 246, 0.5);
+}
+
+/* Glow effect */
+.glow-box {
+  position: relative;
+}
+
+.glow-box::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 2px;
+  background: linear-gradient(135deg, #3b82f6, #60a5fa);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.glow-box:hover::before {
+  opacity: 1;
+}
+
+/* Scroll reveal animation */
+.scroll-reveal {
+  @apply opacity-0 translate-y-12;
+  animation: slideUp 0.6s ease-out forwards;
+}
+
+/* Animated button */
+.btn-primary {
+  @apply px-6 py-3 bg-gradient-to-r from-blue-500 to-blue-600 text-white rounded-lg font-semibold shadow-lg hover:shadow-glow-lg hover:from-blue-600 hover:to-blue-700 active:scale-95;
+  transition: all 0.3s ease;
+}
+
+.btn-secondary {
+  @apply px-6 py-3 border-2 border-blue-500 text-blue-400 rounded-lg font-semibold hover:bg-blue-500/10 active:scale-95;
+  transition: all 0.3s ease;
+}
+
+.btn-ghost {
+  @apply px-4 py-2 text-dark-text2 hover:text-dark-text rounded-lg hover:bg-white/5;
+  transition: all 0.3s ease;
+}
+
+/* Links */
+a {
+  @apply text-blue-400 hover:text-blue-300 underline-offset-2;
+}
+
+/* Input fields */
+input,
+textarea {
+  @apply bg-dark-bg2 border border-dark-bg3 text-dark-text placeholder-dark-text2 rounded-lg px-4 py-2 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/30;
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    @apply !animate-none !transition-none;
+  }
+  
+  html {
+    @apply !scroll-auto;
+  }
+}
+
+/* Responsive typography */
+@media (max-width: 640px) {
+  body {
+    @apply text-sm;
+  }
+  
+  h1 {
+    @apply text-3xl;
+  }
+  
+  h2 {
+    @apply text-2xl;
+  }
+  
+  h3 {
+    @apply text-xl;
+  }
+}
+
+/* Dark mode is always on */
+html {
+  color-scheme: dark;
+}
+
+/* Accessibility improvements */
+.sr-only {
+  @apply absolute w-1 h-1 p-0 -m-1 overflow-hidden border-0;
+  clip: rect(0, 0, 0, 0);
+}
+
+/* Focus visible states */
+button:focus-visible,
+a:focus-visible {
+  @apply outline-2 outline-offset-2 outline-blue-400;
+}
+
+/* Loading animation */
+.loading-spinner {
+  @apply inline-block w-6 h-6 border-blue-400 border-t-transparent rounded-full animate-spin;
+  border-width: 3px;
+}
+
+/* Success message animation */
+.success-message {
+  @apply animate-slideUp;
+}
+
+/* Error message animation */
+.error-message {
+  @apply animate-slideUp text-red-400;
+}
+
+/* Badge styles */
+.badge {
+  @apply inline-block px-3 py-1 bg-blue-500/20 text-blue-400 rounded-full text-xs font-semibold border border-blue-500/30;
+}
+
+/* Section padding */
+section {
+  @apply py-20 px-4 md:px-8 lg:px-16;
+}
+
+/* Container */
+.container {
+  @apply max-w-7xl mx-auto;
+}
+
+/* Grid animation stagger */
+.grid-stagger > * {
+  animation: slideUp 0.6s ease-out forwards;
+}
+
+.grid-stagger > *:nth-child(1) { animation-delay: 0s; }
+.grid-stagger > *:nth-child(2) { animation-delay: 0.1s; }
+.grid-stagger > *:nth-child(3) { animation-delay: 0.2s; }
+.grid-stagger > *:nth-child(4) { animation-delay: 0.3s; }
+.grid-stagger > *:nth-child(5) { animation-delay: 0.4s; }
+.grid-stagger > *:nth-child(6) { animation-delay: 0.5s; }
+.grid-stagger > *:nth-child(7) { animation-delay: 0.6s; }
+.grid-stagger > *:nth-child(8) { animation-delay: 0.7s; }
+.grid-stagger > *:nth-child(n+9) { animation-delay: 0.8s; }
